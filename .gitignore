@@ -1,2 +1,5 @@
-.mcp/memory.json
+# IDEs
 !.vscode/mcp.json
+
+# MCP Servers
+.mcp/memory.json
