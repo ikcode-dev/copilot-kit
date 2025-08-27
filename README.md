@@ -75,8 +75,7 @@ If you have a question or want to talk about some idea related to this repo - fe
 
 - **YouTube**: [IKcode Igor Wnek](https://youtube.com/@IKcodeIgorWnek) - New videos weekly
 - **GitHub**: [@IgorWnek](https://github.com/IgorWnek)
-- **BlueSky 🦋**: [@ikcode.dev]((https://bsky.app/profile/ikcode.dev))
-- **Website**: [ikcode.dev](https://ikcode.dev) - Coming soon
+- **BlueSky 🦋**: [@ikcode.dev](https://bsky.app/profile/ikcode.dev)
 
 ## 📄 License
 
