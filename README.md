@@ -38,6 +38,45 @@ Specialized Copilot personalities for different scenarios
 |-----------|-------------|----------|
 | Coming soon | | |
 
+### MCP Servers
+
+What is MCP?
+
+- Model Context Protocol (MCP) lets Copilot (and other MCP-capable assistants) connect to external "tool servers" for memory, project context, tools and frameworks docs, helps to structure it's thinking process, and domain-specific knowledge.
+- This repo ships a ready-to-use `.vscode/mcp.json` plus a memory template (it's empty, MCP will fill it out) at `.mcp/memory.json.dist`.
+
+#### What's In This Kit?
+
+- `.vscode/mcp.json` - a sample configuration wiring up the servers below
+- `.mcp/memory.json.dist` - template for local, per-project memory storage
+
+#### Quick Setup
+
+- Prerequisites
+  - GitHub Copilot Chat in VSCode with MCP enabled in settings
+  - Sometimes additional things like Node.js installed, etc. as required by each server (see their repos)
+
+- Copy the memory storage template (if you want to use `memory` MCP) `.mcp/memory.json.dist` and save it as `.mcp/memory.json`
+  - Initially `memory.json` is an empty file, so you can just create empty file at `.mcp/memory.json`
+  - I recommend to add `.mcp/memory.json.dist` to the Git repo if you work with a team
+  - ⚠️ Never commit the `.mcp/memory.json` file, it'll contain data relevant to your work
+  - ⚠️ Memory file might be cleared on extensions update and in other cases, check MCP's repo
+  - It's recommended to add similar instruction to your project's README so collaborators set it up too
+
+- Copy configurations of the servers you want to use from the `.vscode/mcp.json` to your project
+  - Sometimes MCP server has `${input:input-id}`in the `env` or other section, this means it's going to store some env variables in VSCode and the specific `input` is defined in the `inputs` field of the JSON configuration object at `.vscode/mcp.json`.
+  - If `input` is required for a MCP server (like for `shadcn-ui`) you will be prompted for the value on the server's first startup, then it's going to be saved securely by VSCode.
+  - 👍 To use `inputs` is my preferred way of storing env variables for MCP servers. I want to commit `.vscode/mcp.json`, so my team members can use them too anytime they want, without any danger of sharing the real env variables.
+
+#### MCP Servers List
+
+| Name | What it gives you | Notes |
+|--------|-------------|----------|
+| [Sequential Thinking](https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking) | This MCP gives the agent ability use more structured thinking process, it's really powerful when combined with the right prompts | 🌟 I use it everyday, basically all the time |
+| [Memory](https://github.com/modelcontextprotocol/servers/blob/main/src/memory/README.md)| It gives your agent ability to memorise different things between conversations, it's really powerful when connected with other MCP servers or remembering some things about the project | ♥️ I combine it with Context7 to remember libraries IDs |
+| [Context7](https://github.com/upstash/context7) | It allows your agent to have the best context when it comes to the newest versions of tools, libraries, frameworks, etc. | ⚠️ It's available to private usage only! |
+| [Shadcn UI](https://github.com/Jpisnice/shadcn-ui-mcp-server) | It gives the agent access to the Shadcn UI components and helps understand how they should be used | To me it's absolute banger. 🚀 I use it whenever I work with Shadcn UI in my projects. |
+
 ## 🚀 Quick Start
 
 1. **Browse** the categories above
@@ -48,7 +87,7 @@ Specialized Copilot personalities for different scenarios
 
 ## 📹 Featured in Videos
 
-- Coming soon
+- [I Can't Code Without These 3 MCP Servers (Game Changers!)](https://youtu.be/pTLrQ2c5A7M)
 
 ## 🛠️ My Tech Stack
 
