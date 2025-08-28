@@ -87,7 +87,7 @@ What is MCP?
 
 ## 📹 Featured in Videos
 
-- Coming soon
+- [I Can't Code Without These 3 MCP Servers (Game Changers!)](https://youtu.be/pTLrQ2c5A7M)
 
 ## 🛠️ My Tech Stack
 
