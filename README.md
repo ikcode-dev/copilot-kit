@@ -76,6 +76,7 @@ What is MCP?
 | [Memory](https://github.com/modelcontextprotocol/servers/blob/main/src/memory/README.md)| It gives your agent ability to memorise different things between conversations, it's really powerful when connected with other MCP servers or remembering some things about the project | ♥️ I combine it with Context7 to remember libraries IDs |
 | [Context7](https://github.com/upstash/context7) | It allows your agent to have the best context when it comes to the newest versions of tools, libraries, frameworks, etc. | ⚠️ It's available to private usage only! |
 | [Shadcn UI](https://github.com/Jpisnice/shadcn-ui-mcp-server) | It gives the agent access to the Shadcn UI components and helps understand how they should be used | To me it's absolute banger. 🚀 I use it whenever I work with Shadcn UI in my projects. |
+| [Chrome DevTools](https://github.com/ChromeDevTools/chrome-devtools-mcp) | Brings Chrome DevTools debugging capabilities to your agent - inspect live pages, debug network/console errors, simulate user behavior, analyze performance, and verify code changes in real-time | 🔍 Perfect for debugging web apps and performance audits |
 
 ## 🚀 Quick Start
 
