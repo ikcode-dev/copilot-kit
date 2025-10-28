@@ -32,6 +32,10 @@
       "env": {
         "GITHUB_API_KEY": "${input:github-api-key}"
       }
-    }
+    },
+		"chrome-devtools": {
+			"command": "npx",
+			"args": ["-y", "chrome-devtools-mcp@latest"]
+		}
   }
 }
