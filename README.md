@@ -33,6 +33,7 @@ Ready-to-use prompts for common development tasks
 | [architecture-review](.github/prompts/architecture-review.prompt.md) | Focused architectural review using Sequential Thinking for multi-dimensional analysis | Architecture |
 | [code-review](.github/prompts/code-review.prompt.md) | High-rigor, tech-agnostic code review that surfaces critical issues first | Code Quality |
 | [pragmatic-code-review](.github/prompts/pragmatic-code-review.prompt.md) | Production-focused code review balancing engineering rigor with real-world constraints | Code Quality |
+| [refactor](.github/prompts/refactor.prompt.md) | Intelligent refactoring following user instructions or applying best practices automatically | Code Quality |
 | [create-prompt](.github/prompts/create-prompt.prompt.md) | Meta-prompt to generate new custom prompts following VS Code best practices | Meta |
 | [document](.github/prompts/document.prompt.md) | Generate exceptional documentation with Mermaid diagrams and practical examples | Documentation |
 
