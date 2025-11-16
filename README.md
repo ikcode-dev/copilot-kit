@@ -20,15 +20,21 @@ Fine-tuned instructions for specific frameworks and patterns
 
 | Instruction | Description | Tech Stack |
 |------------|-------------|------------|
-| Coming soon | | |
+| *Coming soon* | Custom instructions for specific frameworks | *Planned* |
 
 ### 💬 Prompts
 
 Ready-to-use prompts for common development tasks
 
+📖 **[Read the Custom Prompts Guide](docs/custom-prompts-guide.md)** for detailed documentation on how to use and create prompts.
+
 | Prompt | Description | Category |
 |--------|-------------|----------|
-| Coming soon | | |
+| [architecture-review](.github/prompts/architecture-review.prompt.md) | Focused architectural review using Sequential Thinking for multi-dimensional analysis | Architecture |
+| [code-review](.github/prompts/code-review.prompt.md) | High-rigor, tech-agnostic code review that surfaces critical issues first | Code Quality |
+| [pragmatic-code-review](.github/prompts/pragmatic-code-review.prompt.md) | Production-focused code review balancing engineering rigor with real-world constraints | Code Quality |
+| [create-prompt](.github/prompts/create-prompt.prompt.md) | Meta-prompt to generate new custom prompts following VS Code best practices | Meta |
+| [document](.github/prompts/document.prompt.md) | Generate exceptional documentation with Mermaid diagrams and practical examples | Documentation |
 
 ### 🤖 Chat Modes
 
@@ -36,7 +42,7 @@ Specialized Copilot personalities for different scenarios
 
 | Chat Mode | Description | Use Case |
 |-----------|-------------|----------|
-| Coming soon | | |
+| *Coming soon* | Specialized agent personalities for different development scenarios | *Planned* |
 
 ### MCP Servers
 
