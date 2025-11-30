@@ -38,13 +38,22 @@ Ready-to-use prompts for common development tasks
 | [create-prompt](.github/prompts/create-prompt.prompt.md) | Meta-prompt to generate new custom prompts following VS Code best practices | Meta |
 | [document](.github/prompts/document.prompt.md) | Generate exceptional documentation with Mermaid diagrams and practical examples | Documentation |
 
-### 🤖 Chat Modes
+### 🤖 Custom Agents
 
-Specialized Copilot personalities for different scenarios
+Specialized Copilot agent personalities for different development scenarios
 
-| Chat Mode | Description | Use Case |
-|-----------|-------------|----------|
-| *Coming soon* | Specialized agent personalities for different development scenarios | *Planned* |
+| Agent | Description | MCP Tools |
+|-------|-------------|-----------|
+| [backend-engineer](.github/agents/backend-engineer.agent.md) | Pragmatic backend engineer specializing in APIs, databases, and server-side architecture | Sequential Thinking, Context7 |
+
+#### How to Use Custom Agents
+
+1. **Copy the agent file** to your project's `.github/agents/` directory (VS Code automatically detects `.agent.md` files in this folder)
+2. **Ensure required MCP servers are configured** in your `.vscode/mcp.json` (see [MCP Servers](#mcp-servers) section)
+3. **Select the agent** from the agents dropdown in Copilot Chat (click on the current agent name at the top of the chat panel)
+4. **Start chatting** - describe the feature, API endpoint, database operation, or issue you want to solve. You can also ask the agent to brainstorm ideas for backend architecture, API design, or database schema - it will generate multiple alternatives with trade-offs for you to choose from.
+
+> **Note:** Custom agents require VS Code 1.106 or later.
 
 ### MCP Servers
 
