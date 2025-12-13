@@ -28,6 +28,31 @@ Ready-to-use prompts for common development tasks
 
 📖 **[Read the Custom Prompts Guide](docs/custom-prompts-guide.md)** for detailed documentation on how to use and create prompts.
 
+#### 💡 How to Work with Prompts
+
+Prompts are starting points, not one-shot solutions—this is **AI-assisted programming**. Run the prompt, optionally provide additional context, then iterate on the results until you're satisfied.
+
+```mermaid
+flowchart LR
+    A[Run Prompt] --> B[Review Results]
+    B --> C{Satisfied?}
+    C -->|No| D[Iterate: Ask/Answer/Clarify]
+    D --> B
+    C -->|Yes| E[Done ✓]
+```
+
+#### 🏁 Getting Started Prompts
+
+Use these prompts when setting up Copilot in a new or existing repository for the first time.
+
+| Prompt | Description | Use When | Recommended Models |
+|--------|-------------|----------|-------------------|
+| [create-core-copilot-instruction](.github/prompts/create-core-copilot-instruction.prompt.md) | Generate a concise `copilot-instructions.md` file tailored to your project's tech stack and conventions. This file is attached to **every** Copilot conversation, so it's kept lean (50-150 lines) to avoid context pollution. | First thing to run in any new repo or when introducing Copilot to an existing project | Claude Opus 4.5 Preview (preferred), GPT-5.2 Preview |
+
+#### 🔧 Task Prompts
+
+Use these prompts for day-to-day development tasks.
+
 | Prompt | Description | Category |
 |--------|-------------|----------|
 | [architecture-review](.github/prompts/architecture-review.prompt.md) | Focused architectural review using Sequential Thinking for multi-dimensional analysis | Architecture |
