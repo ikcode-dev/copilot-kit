@@ -48,6 +48,7 @@ Use these prompts when setting up Copilot in a new or existing repository for th
 | Prompt | Description | Use When | Recommended Models |
 |--------|-------------|----------|-------------------|
 | [create-core-copilot-instruction](.github/prompts/create-core-copilot-instruction.prompt.md) | Generate a concise `copilot-instructions.md` file tailored to your project's tech stack and conventions. This file is attached to **every** Copilot conversation, so it's kept lean (50-150 lines) to avoid context pollution. | First thing to run in any new repo or when introducing Copilot to an existing project | Claude Opus 4.5 Preview (preferred), GPT-5.2 Preview |
+| [create-granular-copilot-instructions](.github/prompts/create-granular-copilot-instructions.prompt.md) | Create fine-grained `.github/instructions/*.instructions.md` files with targeted `applyTo` glob patterns. These files activate only when working with matching file types (e.g., React components, test files, API routes). | After creating the core instruction file, to add technology-specific or file-type-specific guidance | Claude Opus 4.5 Preview (preferred), GPT-5.2 Preview |
 
 #### 🔧 Task Prompts
 
