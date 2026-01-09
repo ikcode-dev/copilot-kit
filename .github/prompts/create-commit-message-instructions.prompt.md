@@ -71,8 +71,14 @@ Construct the instruction text following this structure:
 
 ## Examples
 
-[2-3 concrete examples showing the expected format]
+[Comprehensive examples for EACH type prefix - see Critical Rule below]
 ```
+
+> **Critical Rule: Comprehensive Examples**
+>
+> The commit message generation feature uses a lower-tier LLM that performs significantly better with abundant examples. **Always include at least one realistic example for EVERY type prefix** defined in the instruction. This is non-negotiable—sparse examples lead to inconsistent output.
+>
+> For Conventional Commits, this means providing examples for: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, and `revert`.
 
 ### Step 3: Generate Settings Configuration
 
@@ -164,21 +170,74 @@ Indicate breaking changes by:
 
 ## Examples
 
+Provide one example for EACH type to guide the model:
+
+### feat - New features
 feat(auth): add OAuth2 login support
+feat(cart): implement guest checkout flow
+feat: add dark mode toggle to settings
 
-fix: resolve null pointer exception in user service
+### fix - Bug fixes
+fix(api): resolve null pointer exception in user service
+fix(ui): correct button alignment on mobile viewport
+fix: prevent duplicate form submissions
 
+### docs - Documentation
 docs(readme): update installation instructions
+docs(api): add endpoint usage examples
+docs: add contributing guidelines
 
-refactor(api)!: change response format for user endpoints
+### style - Code style (no logic changes)
+style: format code with prettier
+style(components): fix indentation in Button component
+style: remove trailing whitespace
+
+### refactor - Code restructuring
+refactor(api): extract validation logic to middleware
+refactor: simplify conditional rendering in Dashboard
+refactor(db): rename user table columns for clarity
+
+### perf - Performance improvements
+perf(images): implement lazy loading for gallery
+perf(api): add database query caching
+perf: reduce bundle size by code splitting
+
+### test - Tests
+test(auth): add unit tests for login validation
+test: increase coverage for utils module
+test(e2e): add checkout flow integration tests
+
+### build - Build system
+build(deps): upgrade React to v19
+build: configure webpack for production optimization
+build(docker): update base image to node 22
+
+### ci - CI/CD changes
+ci: add GitHub Actions workflow for testing
+ci(deploy): configure automatic staging deployments
+ci: add code coverage reporting to pipeline
+
+### chore - Maintenance tasks
+chore: update .gitignore patterns
+chore(deps): bump minor dependency versions
+chore: remove deprecated config files
+
+### revert - Reverting changes
+revert: revert "feat(auth): add OAuth2 login support"
+revert(api): undo breaking change to user endpoint
+
+### Breaking changes
+feat(api)!: change response format for user endpoints
 
 BREAKING CHANGE: User endpoint now returns data wrapped in `data` property
+
+refactor!: drop support for Node.js 16
 ```
 
 ## Guidance
 
-- **Keep it concise**: Copilot works best with clear, focused instructions. Avoid overly verbose rules.
-- **Provide examples**: Concrete examples significantly improve Copilot's output quality.
+- **Examples are critical**: The commit message LLM is lower-tier and relies heavily on examples. Always provide **at least one example per type prefix**. More examples = better results. This is the single most impactful factor for output quality.
+- **Keep rules concise**: While examples should be comprehensive, keep the textual rules short and clear.
 - **Match team culture**: If the team uses emojis, include them. If formal, keep it professional.
 - **Consider tooling**: If the project uses commitlint, semantic-release, or similar tools, ensure compatibility.
 - **File vs inline**: Use file-based instructions for detailed guidelines; inline text for simple rules.
