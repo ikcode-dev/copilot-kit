@@ -4,7 +4,7 @@ description: Generates a custom instruction for GitHub Copilot commit message ge
 argument-hint: Describe your commit message preferences (e.g., "conventional commits with scope", "simple format", "include ticket numbers").
 agent: agent
 model: GPT-5.2-Codex
-tools: ['execute/getTerminalOutput', 'execute/awaitTerminal', 'execute/killTerminal', 'execute/runInTerminal', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'agent', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web', 'sequentialthinking/*', 'todo']
+tools: ['execute/getTerminalOutput', 'execute/awaitTerminal', 'execute/killTerminal', 'execute/runInTerminal', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'agent', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web', 'sequential-thinking/*', 'todo']
 ---
 
 <role>

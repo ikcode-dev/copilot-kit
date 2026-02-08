@@ -3,7 +3,7 @@ name: architecture-review
 description: "Quick sanity check of solution architecture with actionable feedback"
 agent: agent
 argument-hint: "Optional: specify focus area (scalability, security, maintainability, performance)"
-tools: ['search', 'sequentialthinking/*', 'usages', 'changes', 'fetch', 'todos']
+tools: ['execute/getTerminalOutput', 'execute/awaitTerminal', 'execute/killTerminal', 'execute/runInTerminal', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'agent', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web/fetch', 'sequential-thinking/*', 'todo']
 ---
 
 ## Goal

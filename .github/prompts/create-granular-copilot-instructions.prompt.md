@@ -3,7 +3,7 @@ name: create granular copilot instructions
 description: Creates fine-grained .github/instructions/*.instructions.md files with targeted applyTo glob patterns for specific technologies, file types, or architectural layers.
 argument-hint: Describe the scope, technology, or file patterns for which you want to create granular instruction files (e.g., "React components", "API routes", "test files").
 agent: agent
-tools: ['execute/getTerminalOutput', 'execute/runInTerminal', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web', 'context7/*', 'sequentialthinking/*', 'agent', 'todo']
+tools: ['execute/getTerminalOutput', 'execute/awaitTerminal', 'execute/killTerminal', 'execute/runInTerminal', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'agent', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web', 'context7/*', 'sequential-thinking/*', 'todo']
 ---
 ## Role
 

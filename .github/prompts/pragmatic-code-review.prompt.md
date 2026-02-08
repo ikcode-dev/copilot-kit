@@ -3,6 +3,7 @@ name: pragmatic-code-review
 description: "Pragmatic, language-agnostic code review focused on engineering excellence and practical tradeoffs"
 agent: agent
 argument-hint: "Optional: specify focus area (security, performance, maintainability, etc.)"
+tools: ['execute/testFailure', 'execute/getTerminalOutput', 'execute/awaitTerminal', 'execute/killTerminal', 'execute/createAndRunTask', 'execute/runInTerminal', 'execute/runTests', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'agent', 'search', 'web/fetch', 'sequential-thinking/*', 'todo']
 ---
 
 ## Goal

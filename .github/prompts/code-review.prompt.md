@@ -3,6 +3,7 @@ name: code-review
 description: "Run a high-rigor, tech-agnostic code review that surfaces the most critical issues first."
 agent: agent
 argument-hint: "Optional: describe focus areas, risks, or files to prioritize."
+tools: ['execute/testFailure', 'execute/getTerminalOutput', 'execute/awaitTerminal', 'execute/killTerminal', 'execute/createAndRunTask', 'execute/runInTerminal', 'execute/runTests', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'agent', 'search', 'web/fetch', 'sequential-thinking/*', 'todo']
 ---
 
 ## Goal

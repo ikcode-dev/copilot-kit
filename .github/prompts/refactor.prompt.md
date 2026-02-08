@@ -3,7 +3,7 @@ name: refactor
 description: "Pragmatic refactoring with best practices or custom instructions"
 agent: agent
 argument-hint: "Optional: specify refactoring goals (e.g., simplify, performance, testability)"
-tools: ['edit', 'search', 'runCommands', 'sequentialthinking/*', 'usages', 'problems', 'changes', 'testFailure', 'fetch', 'todos', 'runSubagent', 'runTests']
+tools: ['execute/testFailure', 'execute/getTerminalOutput', 'execute/awaitTerminal', 'execute/killTerminal', 'execute/runInTerminal', 'execute/runTests', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'agent', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'edit/editNotebook', 'search', 'web/fetch', 'context7/*', 'sequentialthinking/*', 'sequential-thinking/*', 'todo']
 ---
 
 ## Goal
