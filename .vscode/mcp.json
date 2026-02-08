@@ -15,7 +15,7 @@
         "MEMORY_FILE_PATH": "${workspaceFolder}/.mcp/memory.json"
       }
     },
-    "sequentialthinking": {
+    "sequential-thinking": {
       "type": "stdio",
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-sequential-thinking@latest"]
