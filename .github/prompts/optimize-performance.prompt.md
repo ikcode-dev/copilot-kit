@@ -3,7 +3,7 @@ name: optimize-performance
 description: "Identify and fix performance issues using pattern recognition and language-idiomatic best practices"
 agent: agent
 argument-hint: "Optional: specify performance target (latency, throughput, memory) or constraints"
-tools: ['edit', 'search', 'runCommands', 'sequentialthinking/*', 'usages', 'problems', 'changes', 'testFailure', 'fetch', 'todos', 'runSubagent', 'runTests']
+tools: ['execute/testFailure', 'execute/getTerminalOutput', 'execute/awaitTerminal', 'execute/runInTerminal', 'execute/runTests', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'agent', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'edit/editNotebook', 'search', 'web/fetch', 'sequentialthinking/*', 'sequential-thinking/*', 'todo']
 ---
 
 ## Goal

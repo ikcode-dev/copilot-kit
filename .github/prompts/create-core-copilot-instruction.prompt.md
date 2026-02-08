@@ -3,7 +3,7 @@ name: create core copilot instruction
 description: Creates the foundational .github/copilot-instructions.md file that provides universal project context for all GitHub Copilot interactions.
 argument-hint: Provide details about the project or let me discover them automatically.
 agent: agent
-tools: ['execute/getTerminalOutput', 'execute/runInTerminal', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web', 'context7/*', 'sequentialthinking/*', 'agent', 'todo']
+tools: ['execute/getTerminalOutput', 'execute/awaitTerminal', 'execute/killTerminal', 'execute/runInTerminal', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'agent', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web', 'context7/*', 'sequential-thinking/*', 'todo']
 ---
 ## Role
 

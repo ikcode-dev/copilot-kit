@@ -3,6 +3,7 @@ name: document
 description: "Generate exceptional, comprehensive documentation with diagrams and clear examples"
 agent: agent
 argument-hint: "Optional: specify doc type (README, API, guide, comments) or target file"
+tools: ['execute/getTerminalOutput', 'execute/awaitTerminal', 'execute/killTerminal', 'execute/runInTerminal', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'agent', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web/fetch', 'sequential-thinking/*', 'todo']
 ---
 
 ## Goal

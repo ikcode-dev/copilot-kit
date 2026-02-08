@@ -3,6 +3,7 @@ name: create-prompt
 description: "Generate a new, well-structured Copilot prompt file following VS Code best practices."
 agent: agent
 argument-hint: "Describe the workflow or task this prompt should automate."
+tools: ['execute/getTerminalOutput', 'execute/awaitTerminal', 'execute/killTerminal', 'execute/createAndRunTask', 'execute/runInTerminal', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'agent', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web/fetch', 'sequential-thinking/*', 'todo']
 ---
 
 ## Goal
