@@ -89,6 +89,7 @@ Reusable slash-command skills that extend Copilot's capabilities. Skills are def
 | Skill | Description |
 |-------|-------------|
 | [kit-copilot-create-commit-instructions](.github/skills/copilot/kit-copilot-create-commit-instructions/SKILL.md) | Generates a commit message instruction file for Copilot's commit message generation in VS Code. Defaults to Conventional Commits. |
+| [kit-copilot-create-skill](.github/skills/copilot/kit-copilot-create-skill/SKILL.md) | Scaffolds a new Agent Skill directory and SKILL.md file following the Agent Skills open standard. Use when you need to create a new slash command or reusable capability for GitHub Copilot. |
 
 #### How to Use Agent Skills
 
