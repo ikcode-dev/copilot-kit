@@ -82,6 +82,36 @@ Specialized Copilot agent personalities for different development scenarios
 
 > **Note:** Custom agents require VS Code 1.106 or later.
 
+### 🧩 Agent Skills
+
+Reusable slash-command skills that extend Copilot's capabilities. Skills are defined as `SKILL.md` files following the [Agent Skills specification](https://agentskills.io/), [VS Code Skills docs](https://code.visualstudio.com/docs/copilot/customization/agent-skills), and can be invoked via `/` commands in Copilot Chat.
+
+| Skill | Description |
+|-------|-------------|
+| [kit-copilot-create-commit-instructions](.github/skills/copilot/kit-copilot-create-commit-instructions/SKILL.md) | Generates a commit message instruction file for Copilot's commit message generation in VS Code. Defaults to Conventional Commits. |
+
+#### How to Use Agent Skills
+
+There are two ways to make skills available:
+
+**Option A: Copy to your project (per-repo)**
+
+Copy the skill directory into your project's `.github/skills/copilot/` folder. This lets you adjust the skill to fit your project's specific needs.
+
+**Option B: Configure a global skills location (all repos, 🌟 recommended)**
+
+Point VS Code to this repo's skills directory so every project gets access automatically — no copying needed.
+
+1. Open VS Code Settings (`Cmd + ,` on macOS, `Ctrl + ,` on Windows/Linux)
+2. Search for **"Agent Skills Locations"** (setting ID: `chat.agentSkillsLocations`)
+3. Add the absolute path to the skills directory, e.g.:
+   ```
+   ~/dev/ikcode-dev/copilot-kit/.github/skills/copilot
+   ```
+4. Skills will now appear as `/` slash commands in Copilot Chat across all your workspaces
+
+> **Tip:** If you clone this repo to a different path, update the setting accordingly. Use `~` for your home directory to keep it portable across machines.
+
 ### MCP Servers
 
 What is MCP?
