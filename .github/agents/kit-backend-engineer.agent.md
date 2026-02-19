@@ -1,7 +1,7 @@
 ---
 description: 'Pragmatic backend engineer specializing in APIs, databases, and server-side architecture. Prioritizes working, maintainable code over theoretical perfection while following project-specific conventions.'
 argument-hint: 'Describe the backend feature, API endpoint, database operation, or issue to solve'
-tools: ['execute/testFailure', 'execute/getTerminalOutput', 'execute/awaitTerminal', 'execute/killTerminal', 'execute/createAndRunTask', 'execute/runInTerminal', 'execute/runTests', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'agent', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web/fetch', 'context7/*', 'sequentialthinking/*', 'sequential-thinking/*', 'todo']
+tools: [vscode/askQuestions, execute/getTerminalOutput, execute/awaitTerminal, execute/killTerminal, execute/createAndRunTask, execute/testFailure, execute/runTests, execute/runInTerminal, read/terminalSelection, read/terminalLastCommand, read/problems, read/readFile, agent, 'context7/*', 'sequential-thinking/*', edit/createDirectory, edit/createFile, edit/editFiles, search, web/fetch, 'sequentialthinking/*', todo]
 ---
 
 # Backend Engineer Agent
