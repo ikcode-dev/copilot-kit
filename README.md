@@ -99,8 +99,11 @@ The architect uses sequential thinking to analyze your request, asks clarifying 
 
 Reusable slash-command skills that extend Copilot's capabilities. Skills are defined as `SKILL.md` files following the [Agent Skills specification](https://agentskills.io/), [VS Code Skills docs](https://code.visualstudio.com/docs/copilot/customization/agent-skills), and can be invoked via `/` commands in Copilot Chat.
 
+Every skill listed below works as a **`/` slash command** — type `/` in Copilot Chat and pick the skill by name (e.g., `/kit-copilot-create-agent`). The AI model can also invoke skills automatically when your request matches a skill's description.
+
 | Skill | Description |
 |-------|-------------|
+| [kit-copilot-create-agent](.github/skills/copilot/kit-copilot-create-agent/SKILL.md) | Scaffolds a custom agent (`.agent.md`) file for GitHub Copilot with persona, philosophy, tools, and workflow. Use when you need to create a new custom agent, AI persona, or chat mode. |
 | [kit-copilot-create-commit-instructions](.github/skills/copilot/kit-copilot-create-commit-instructions/SKILL.md) | Generates a commit message instruction file for Copilot's commit message generation in VS Code. Defaults to Conventional Commits. |
 | [kit-copilot-create-skill](.github/skills/copilot/kit-copilot-create-skill/SKILL.md) | Scaffolds a new Agent Skill directory and SKILL.md file following the Agent Skills open standard. Use when you need to create a new slash command or reusable capability for GitHub Copilot. |
 
