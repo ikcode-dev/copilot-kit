@@ -71,6 +71,7 @@ Specialized Copilot agent personalities for different development scenarios
 
 | Agent | Description | MCP Tools |
 |-------|-------------|-----------|
+| [kit-copilot-architect](.github/agents/kit-copilot-architect.agent.md) | Copilot Customization Architect — analyzes your needs and picks the right customization mechanism (agent, skill, instruction, prompt, hook, or MCP). Delegates implementation to specialized skills. | Sequential Thinking |
 | [backend-engineer](.github/agents/backend-engineer.agent.md) | Pragmatic backend engineer specializing in APIs, databases, and server-side architecture | Sequential Thinking, Context7 |
 
 #### How to Use Custom Agents
@@ -78,9 +79,21 @@ Specialized Copilot agent personalities for different development scenarios
 1. **Copy the agent file** to your project's `.github/agents/` directory (VS Code automatically detects `.agent.md` files in this folder)
 2. **Ensure required MCP servers are configured** in your `.vscode/mcp.json` (see [MCP Servers](#mcp-servers) section)
 3. **Select the agent** from the agents dropdown in Copilot Chat (click on the current agent name at the top of the chat panel)
-4. **Start chatting** - describe the feature, API endpoint, database operation, or issue you want to solve. You can also ask the agent to brainstorm ideas for backend architecture, API design, or database schema - it will generate multiple alternatives with trade-offs for you to choose from.
+4. **Start chatting** — describe the feature, API endpoint, database operation, or issue you want to solve. You can also ask the agent to brainstorm ideas for backend architecture, API design, or database schema — it will generate multiple alternatives with trade-offs for you to choose from.
 
 > **Note:** Custom agents require VS Code 1.106 or later.
+
+#### 🏗️ Copilot Customization Architect — Getting Started
+
+The **kit-copilot-architect** agent is the recommended starting point when you're unsure which Copilot customization you need. Instead of learning the differences between agents, skills, instructions, prompts, hooks, and MCP servers yourself, describe what you want to achieve and let the architect figure out the right approach.
+
+**Example prompts:**
+- _"I want the AI to always follow our team's coding conventions"_ → the architect will recommend custom instructions
+- _"I need a reusable workflow for scaffolding API endpoints"_ → the architect will recommend an agent skill
+- _"I want a specialized AI persona for security reviews"_ → the architect will recommend a custom agent
+- _"I want code to be auto-formatted after every edit"_ → the architect will recommend a hook
+
+The architect uses sequential thinking to analyze your request, asks clarifying questions only when genuinely needed, and then delegates to the appropriate skill (e.g., `kit-copilot-create-agent`, `kit-copilot-create-skill`) to handle the implementation. If you already know which skill you need, just name it directly and the architect will delegate immediately without extra questions.
 
 ### 🧩 Agent Skills
 
