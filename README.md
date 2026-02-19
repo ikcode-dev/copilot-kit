@@ -72,7 +72,7 @@ Specialized Copilot agent personalities for different development scenarios
 | Agent | Description | MCP Tools |
 |-------|-------------|-----------|
 | [kit-copilot-architect](.github/agents/kit-copilot-architect.agent.md) | Copilot Customization Architect — analyzes your needs and picks the right customization mechanism (agent, skill, instruction, prompt, hook, or MCP). Delegates implementation to specialized skills. | Sequential Thinking |
-| [backend-engineer](.github/agents/backend-engineer.agent.md) | Pragmatic backend engineer specializing in APIs, databases, and server-side architecture | Sequential Thinking, Context7 |
+| [kit-backend-engineer](.github/agents/kit-backend-engineer.agent.md) | Pragmatic backend engineer specializing in APIs, databases, and server-side architecture | Sequential Thinking, Context7 |
 
 #### How to Use Custom Agents
 
