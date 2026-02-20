@@ -82,6 +82,8 @@ When you've determined which customization to create, delegate to the appropriat
 | Create a custom agent | `kit-copilot-create-agent` | The user needs a new `.agent.md` file. This skill handles the interview, drafting, and generation process. |
 | Create an agent skill | `kit-copilot-create-skill` | The user needs a new `SKILL.md` directory and file. This skill handles naming, description writing, and scaffolding. |
 | Create commit message instructions | `kit-copilot-create-commit-instructions` | The user wants to customize how Copilot generates commit messages. This skill handles format selection and file generation. |
+| Create core copilot instructions | `kit-copilot-create-core-instruction` | The user wants to create or update `.github/copilot-instructions.md`. This skill handles discovery, drafting, and generation of the universal project context file. |
+| Create a prompt file | `kit-copilot-create-prompt` | The user needs a new `.prompt.md` task template. This skill handles the interview, frontmatter decisions, body structure, and generation. |
 
 ### Not Yet Available (Guide Manually)
 
@@ -89,8 +91,7 @@ For customization types where no skill exists yet, provide guidance on the corre
 
 | Need | Guidance |
 |---|---|
-| Create custom instructions | Guide the user to create `.github/copilot-instructions.md` (always-on) or `.instructions.md` files (file-based). Reference: [Custom Instructions docs](https://code.visualstudio.com/docs/copilot/customization/custom-instructions) |
-| Create a prompt file | Guide the user to create a `.prompt.md` file in `.github/prompts/`. Reference: [Prompt Files docs](https://code.visualstudio.com/docs/copilot/customization/prompt-files) |
+| Create granular instructions | Guide the user to create `.github/instructions/*.instructions.md` files with `applyTo` glob patterns for file-type-specific or folder-specific conventions. Reference: [Custom Instructions docs](https://code.visualstudio.com/docs/copilot/customization/custom-instructions) |
 | Create a hook | Guide the user to create a JSON file in `.github/hooks/` with the hook configuration format. Reference: [Hooks docs](https://code.visualstudio.com/docs/copilot/customization/hooks) |
 | Configure MCP servers | Guide the user to update `.vscode/mcp.json` or `.mcp.json`. Reference: [MCP Servers docs](https://code.visualstudio.com/docs/copilot/customization/mcp-servers) |
 
@@ -125,11 +126,12 @@ Your questions must help classify the mechanism — never ask implementation det
 - "What should the agent be called?" → `kit-copilot-create-agent` asks this
 - "What tools should the agent have?" → `kit-copilot-create-agent` asks this
 - "What commit message format do you prefer?" → `kit-copilot-create-commit-instructions` asks this
+- "What agent mode should the prompt use?" → `kit-copilot-create-prompt` asks this
 
 ### When NOT to Ask
 
 **Skip questions entirely when:**
-- The request contains a clear mechanism signal ("create an agent", "add a hook", "set up commit instructions")
+- The request contains a clear mechanism signal ("create an agent", "add a hook", "set up commit instructions", "create a prompt")
 - The request maps unambiguously to one row in the Decision Table
 - The user references a specific file type (`.agent.md`, `.instructions.md`, `SKILL.md`)
 - The user has already provided enough context to answer all three discriminators
@@ -225,7 +227,7 @@ Some requests require **multiple customization types** working together. Recogni
 
 ### Pattern: Prompt + Agent Override
 **Signal**: "I want a specific task that uses a different agent configuration"
-**Approach**: Create a prompt file with an `agent:` field that references a custom agent, overriding the default.
+**Approach**: Create a prompt file (via `kit-copilot-create-prompt`) with an `agent:` field that references a custom agent, overriding the default.
 
 ## Quality Standards
 
