@@ -18,12 +18,14 @@ Generates a `.github/commit-message-instructions.md` file that customizes how Gi
 
 Determine the user's commit message preferences. If the user provides no specific preferences, default to Conventional Commits format.
 
-**Check existing project conventions before asking questions:**
+<context-gathering>
+Check existing project conventions before asking questions:
 - Look for `CONTRIBUTING.md`, `README.md` for commit guidelines
 - Check `.commitlintrc`, `commitlint.config.js` for existing linting rules
 - Scan recent git history for established patterns (if accessible)
+</context-gathering>
 
-**Ask clarifying questions only if needed:**
+<questions>
 1. Format preference — Conventional Commits, Simple Imperative, Ticket-First, or Emoji-Enhanced?
 2. Should commits include a scope? (e.g., `feat(auth):` vs `feat:`)
 3. Should commits reference issue/ticket numbers? What format? (e.g., `#123`, `JIRA-123`)
@@ -32,15 +34,18 @@ Determine the user's commit message preferences. If the user provides no specifi
 6. What language should commit messages be written in?
 
 If the user's request is clear enough, skip the questions and proceed directly.
+</questions>
 
 ### Step 2: Determine Commit Style
 
 Based on user input, select the appropriate commit message style:
 
+<decision-guide name="commit-style">
 - **Conventional Commits** (default): Structured, parseable commits. Example: `feat(api): add user authentication endpoint`
 - **Simple Imperative**: Smaller projects, less formal. Example: `Add user authentication`
 - **Ticket-First**: Issue-tracker-centric workflows. Example: `[PROJ-123] Add user authentication`
 - **Emoji-Enhanced**: Visual categorization. Example: `✨ feat: add user authentication`
+</decision-guide>
 
 ### Step 3: Build Instruction Content
 
@@ -48,6 +53,7 @@ Construct the instruction file content using **XML-like tags exclusively** — n
 
 Follow this skeleton:
 
+<template name="instruction-skeleton">
 ```xml
 <commit-message-guidelines>
 
@@ -77,18 +83,26 @@ Follow this skeleton:
 
 </commit-message-guidelines>
 ```
+</template>
 
-**Critical rule — Comprehensive Examples:** The commit message generation feature uses a lower-tier LLM that performs significantly better with abundant examples. Always include at least one realistic example for EVERY type prefix defined in the instruction. This is non-negotiable — sparse examples lead to inconsistent output. For Conventional Commits, provide examples for: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, and `revert`.
+<rules>
+The commit message generation feature uses a lower-tier LLM that performs significantly better with abundant examples. Always include at least one realistic example for EVERY type prefix defined in the instruction. This is non-negotiable — sparse examples lead to inconsistent output. For Conventional Commits, provide examples for: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, and `revert`.
+</rules>
 
 ### Step 4: Write the File
 
 Write the generated instruction content to `.github/commit-message-instructions.md` in the workspace root. If the file already exists, overwrite it with the new content.
 
-**Do NOT paste the content as a code block in chat — create the actual file.**
+<rules>
+Do NOT paste the content as a code block in chat — create the actual file.
+</rules>
 
 ### Step 5: Guide User on Settings Configuration
 
-After the file is created, tell the user to add the following to their VS Code workspace settings (`.vscode/settings.json`):
+After the file is created, display this message to the user:
+
+<user-message>
+Add the following to your VS Code workspace settings (`.vscode/settings.json`):
 
 ```json
 {
@@ -98,7 +112,8 @@ After the file is created, tell the user to add the following to their VS Code w
 }
 ```
 
-Explain that once this setting is in place, staging changes and clicking the sparkle icon in Source Control will generate commit messages following the instructions in the file.
+Once this setting is in place, staging changes and clicking the sparkle icon in Source Control will generate commit messages following the instructions in the file.
+</user-message>
 
 ## Default Template (Conventional Commits)
 
@@ -229,6 +244,7 @@ Indicate breaking changes by:
 
 ## Common Customizations
 
+<decision-guide name="customizations">
 | Request | Adjustment |
 |---------|------------|
 | Include Jira ticket | Add rule: Include Jira ticket number at the start: `[PROJ-XXX] type: description` |
@@ -237,11 +253,12 @@ Indicate breaking changes by:
 | Include emoji | Add emoji mapping to types (e.g., `✨ feat`, `🐛 fix`) |
 | Multi-language team | Specify commit language: "Write all commit messages in English" |
 | Link to PR | Add footer instruction for PR references |
+</decision-guide>
 
-## Key Rules
-
+<rules>
 - **Always file-based** — always write instructions to `.github/commit-message-instructions.md`. Never output them inline in the chat.
 - **XML-like tags only** — the generated file must use exclusively XML-like tags for structure. No markdown headers, bullet lists, or tables in the output file.
 - **Examples are critical** — always provide at least one example per type prefix. More examples = better results. This is the single most impactful factor for output quality.
 - **Keep rules concise** — while examples should be comprehensive, keep textual rules short and clear.
 - **Consider tooling** — if the project uses commitlint, semantic-release, or similar tools, ensure compatibility.
+</rules>

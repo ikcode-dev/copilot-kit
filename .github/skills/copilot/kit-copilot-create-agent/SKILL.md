@@ -23,8 +23,7 @@ Understanding the separation of concerns is critical for creating effective agen
 | **Custom Agent** | WHO the AI is and HOW it behaves | The employee's role, personality, and work style | `.agent.md` || **Agent Skill** | Reusable CAPABILITY or multi-step workflow | A specialized training module the employee can use | `SKILL.md` in a skill directory || **Prompt File** | WHAT specific task to perform | A work order or task assignment | `.prompt.md` |
 | **Custom Instructions** | WHERE — project context and standards | The company handbook | `.instructions.md` |
 
-### What belongs in a Custom Agent
-
+<belongs-in-agent>
 - Role and expertise areas (identity)
 - Core philosophy and guiding principles
 - Problem-solving methodologies and named techniques
@@ -32,15 +31,16 @@ Understanding the separation of concerns is critical for creating effective agen
 - Workflow and process patterns
 - Quality standards and output expectations
 - Response style and behavioral traits
+</belongs-in-agent>
 
-### What does NOT belong in a Custom Agent
-
-- **Task-specific workflows** → put these in prompt files (`.prompt.md`)
-- **Reusable specialized capabilities** (testing strategies, deployment processes, code review checklists) → put these in Agent Skills (`SKILL.md`). Skills are loaded on-demand and work across VS Code, Copilot CLI, and Copilot coding agent.
-- **Project-specific info** (tech stack, coding standards) → put these in custom instructions (`.instructions.md` or `copilot-instructions.md`)
-- **Volatile/frequently changing content** (sprint priorities, ticket numbers) → keep in external files
-- **Generic AI advice** ("write clean code") → the AI already knows this
-- **Tool API documentation** → focus on WHEN to use tools, not their internal parameters
+<does-not-belong-in-agent>
+- Task-specific workflows → put these in prompt files (`.prompt.md`)
+- Reusable specialized capabilities (testing strategies, deployment processes, code review checklists) → put these in Agent Skills (`SKILL.md`). Skills are loaded on-demand and work across VS Code, Copilot CLI, and Copilot coding agent.
+- Project-specific info (tech stack, coding standards) → put these in custom instructions (`.instructions.md` or `copilot-instructions.md`)
+- Volatile/frequently changing content (sprint priorities, ticket numbers) → keep in external files
+- Generic AI advice ("write clean code") → the AI already knows this
+- Tool API documentation → focus on WHEN to use tools, not their internal parameters
+</does-not-belong-in-agent>
 
 ### Agent Skills vs Custom Agents
 
@@ -57,6 +57,7 @@ When creating an agent, consider which existing skills in the workspace might co
 
 A well-structured agent body follows four tiers of content, from essential to specialized:
 
+<template name="agent-anatomy">
 ### Tier 1: Essential (every agent needs these)
 
 1. **Agent Identity** — Opening statement establishing who the agent is. Start with "You are a..." followed by specific role, 3-5 expertise areas, and key behavioral traits. Keep to 2-3 sentences.
@@ -79,6 +80,7 @@ A well-structured agent body follows four tiers of content, from essential to sp
 9. **Domain-Specific Sections** — e.g., Database Guidelines, Accessibility Standards, Security Considerations.
 10. **Brainstorming Mode** — For agents that need to ideate or explore options.
 11. **Handoffs** — Workflow transitions to other agents.
+</template>
 
 ## Step-by-step Procedure
 
@@ -86,8 +88,7 @@ A well-structured agent body follows four tiers of content, from essential to sp
 
 Before creating anything, gather requirements from the user. Use `ask_questions` if available to ask all clarifying questions in a single structured prompt. Otherwise, ask in chat.
 
-**Questions to ask:**
-
+<questions>
 1. **Role & Domain**: What specialized role should this agent embody? (e.g., backend engineer, security reviewer, planner, solution architect, DevOps specialist). Be specific — avoid "full-stack developer who can do anything."
 2. **Core Philosophy**: What are the 3-5 non-negotiable principles that should guide this agent's decisions? (e.g., "pragmatism over perfection", "security-first thinking", "readability over cleverness", "test before implementing"). If the user is unsure, suggest principles appropriate for the chosen role.
 3. **Problem-Solving Style**: How should the agent approach problems? (e.g., systematic breakdown, research-first, test-driven, iterative prototyping, root cause analysis)
@@ -98,7 +99,8 @@ Before creating anything, gather requirements from the user. Use `ask_questions`
 5. **Handoffs**: Should this agent hand off to other agents? If so, describe the workflow (e.g., planning → implementation, implementation → review).
 6. **Storage Location**: Where should the agent file live? Default to workspace `.github/agents/` folder. Alternatives: user profile (for cross-workspace reuse), `.claude/agents/` (for Claude Code compatibility).
 
-Do **not** proceed to drafting until you have clear answers to at least questions 1, 2, and 4.
+Do NOT proceed to drafting until you have clear answers to at least questions 1, 2, and 4.
+</questions>
 
 ### Step 2: Draft
 
@@ -127,14 +129,17 @@ Present the complete draft to the user for review before generating.
 
 Once confirmed:
 
-1. **Create the `.agent.md` file** in the chosen location (default: `.github/agents/` in the workspace).
+<rules>
+1. Create the `.agent.md` file in the chosen location (default: `.github/agents/` in the workspace).
 2. Ensure the YAML frontmatter is valid and properly delimited with `---`.
 3. Ensure the Markdown body follows the four-tier anatomy structure.
+</rules>
 
 ### Step 4: Validate and Verify Tools
 
-Before reporting completion, perform these checks:
+Before reporting completion, iterate through every check below.
 
+<validation>
 - [ ] YAML frontmatter is valid (properly closed `---` delimiters)
 - [ ] `description` field is present and clearly states the agent's role
 - [ ] `tools` array is populated with appropriate tools for the role
@@ -143,33 +148,35 @@ Before reporting completion, perform these checks:
 - [ ] No project-specific info in the body (those belong in custom instructions)
 - [ ] No overly broad specialization ("full-stack developer who does everything")
 - [ ] Philosophy principles are actionable, not generic
+</validation>
 
-**CRITICAL — Inform the user about tool verification:**
+After generating the agent, always display this message to the user:
 
-After generating the agent, always display a clear message to the user:
+<user-message>
+⚠️ **Verify Your Agent's Tools**
 
-> **⚠️ Verify Your Agent's Tools**
->
-> The tools listed in your agent's frontmatter define what capabilities the agent has. Please review and adjust them:
->
-> 1. Open the generated `.agent.md` file
-> 2. Review the `tools:` section in the frontmatter
-> 3. **Add** any MCP servers or tools specific to your workflow
-> 4. **Remove** tools that shouldn't be available for this agent's role (e.g., a planner shouldn't have editing tools)
-> 5. To include all tools from an MCP server, use the `server-name/*` format
->
-> You can verify the agent loads correctly by selecting **Configure Custom Agents** from the agents dropdown in the Chat view, or by checking **Diagnostics** (right-click in Chat view → Diagnostics).
->
-> Available tool categories:
-> - **Editing**: `edit/createFile`, `edit/editFiles`, `edit/createDirectory`
-> - **Search**: `search`, `usages`, `problems`
-> - **Execution**: `runCommands`, `runTests`
-> - **External**: `fetch`
-> - **MCP**: `server-name/*` (includes all tools from the named MCP server)
-> - **Agents**: Add `agents: ['*']` or specific agent names to allow subagent delegation
+The tools listed in your agent's frontmatter define what capabilities the agent has. Please review and adjust them:
+
+1. Open the generated `.agent.md` file
+2. Review the `tools:` section in the frontmatter
+3. **Add** any MCP servers or tools specific to your workflow
+4. **Remove** tools that shouldn't be available for this agent's role (e.g., a planner shouldn't have editing tools)
+5. To include all tools from an MCP server, use the `server-name/*` format
+
+You can verify the agent loads correctly by selecting **Configure Custom Agents** from the agents dropdown in the Chat view, or by checking **Diagnostics** (right-click in Chat view → Diagnostics).
+
+Available tool categories:
+- **Editing**: `edit/createFile`, `edit/editFiles`, `edit/createDirectory`
+- **Search**: `search`, `usages`, `problems`
+- **Execution**: `runCommands`, `runTests`
+- **External**: `fetch`
+- **MCP**: `server-name/*` (includes all tools from the named MCP server)
+- **Agents**: Add `agents: ['*']` or specific agent names to allow subagent delegation
+</user-message>
 
 ## Tool Discovery
 
+<context-gathering>
 Do NOT hardcode a list of tools to suggest. Tools vary across workspaces and users. Instead, follow this discovery process when helping the user choose tools:
 
 1. **Search for existing agents** — Look for `.agent.md` files in `.github/agents/`, `.claude/agents/`, and user profile locations. Read their `tools:` fields to understand what tools are available in this environment.
@@ -178,11 +185,14 @@ Do NOT hardcode a list of tools to suggest. Tools vary across workspaces and use
    - **Read-only roles** (planners, reviewers, architects): Exclude editing and execution tools. Focus on search, navigation, and fetch capabilities.
    - **Active roles** (implementers, engineers, debuggers): Include editing, execution, testing, and search tools.
 4. **Present findings** — Show the user what tools were discovered and recommend which ones suit the agent's role.
+</context-gathering>
 
-**Format**: Always use inline YAML array syntax for the `tools` field:
+<rules>
+Always use inline YAML array syntax for the `tools` field:
 
 ```yaml
 tools: [edit/createFile, edit/editFiles, search, usages, 'mcp-server/*']
 ```
 
-Note: Quote tool identifiers that contain special YAML characters (like `*` in `'server/*'`).
+Quote tool identifiers that contain special YAML characters (like `*` in `'server/*'`).
+</rules>
