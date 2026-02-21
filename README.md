@@ -41,13 +41,29 @@ flowchart LR
     C -->|Yes| E[Done ✓]
 ```
 
-#### 🏁 Getting Started Prompts
+#### 🏁 Getting Started — Customise Copilot for Your Project
 
-Use these prompts when setting up Copilot in a new or existing repository for the first time.
+New to this repo? Here's the recommended path to set up Copilot customizations in your project. You have two options:
 
-| Prompt | Description | Use When | Recommended Models |
-|--------|-------------|----------|-------------------|
-| [create-granular-copilot-instructions](.github/prompts/create-granular-copilot-instructions.prompt.md) | Create fine-grained `.github/instructions/*.instructions.md` files with targeted `applyTo` glob patterns. These files activate only when working with matching file types (e.g., React components, test files, API routes). | After creating the core instruction file, to add technology-specific or file-type-specific guidance | Claude Opus 4.5 Preview (preferred), GPT-5.2 Preview |
+**Option A: Let the Architect guide you (recommended)**
+
+Switch to the [`kit-copilot-architect`](.github/agents/kit-copilot-architect.agent.md) agent in Copilot Chat and describe what you need. For example:
+
+> _"Please generate instructions for Copilot based on my repository"_
+
+The architect will analyze your codebase and walk you through creating the right customizations.
+
+**Option B: Run the setup skills directly**
+
+If you prefer a hands-on approach, run these three skills in order:
+
+| Step | Skill | Why |
+|------|-------|-----|
+| 1 | [`/kit-copilot-create-core-instruction`](.github/skills/copilot/kit-copilot-create-core-instruction/SKILL.md) | Creates `.github/copilot-instructions.md` — the universal project context file attached to **every** Copilot conversation. This is the foundation: it tells Copilot your tech stack, architecture, and cross-cutting conventions so responses are consistent and project-aware. |
+| 2 | [`/kit-copilot-create-instruction`](.github/skills/copilot/kit-copilot-create-instruction/SKILL.md) | Creates `.github/instructions/*.instructions.md` files with targeted `applyTo` glob patterns. These activate only for matching file types (e.g., React components, test files, API routes), giving Copilot precise guidance without bloating the core file. |
+| 3 | [`/kit-copilot-create-commit-instructions`](.github/skills/copilot/kit-copilot-create-commit-instructions/SKILL.md) | Creates `.github/commit-message-instructions.md` for consistent commit messages. Defaults to Conventional Commits — so every team member gets the same format when using Copilot's commit message generation. |
+
+> **Why does this matter?** Without custom instructions, Copilot relies on generic knowledge. With them, it understands _your_ project's conventions, patterns, and tech stack — producing more consistent, relevant, and accurate suggestions across your entire codebase.
 
 #### 🔧 Task Prompts
 
@@ -103,6 +119,7 @@ Every skill listed below works as a **`/` slash command** — type `/` in Copilo
 | [kit-copilot-create-agent](.github/skills/copilot/kit-copilot-create-agent/SKILL.md) | Scaffolds a custom agent (`.agent.md`) file for GitHub Copilot with persona, philosophy, tools, and workflow. Use when you need to create a new custom agent, AI persona, or chat mode. |
 | [kit-copilot-create-commit-instructions](.github/skills/copilot/kit-copilot-create-commit-instructions/SKILL.md) | Generates a commit message instruction file for Copilot's commit message generation in VS Code. Defaults to Conventional Commits. |
 | [kit-copilot-create-core-instruction](.github/skills/copilot/kit-copilot-create-core-instruction/SKILL.md) | Creates the foundational `.github/copilot-instructions.md` file that provides universal project context for all Copilot interactions. Keeps the core file lean (50-150 lines) so every line earns its place. |
+| [kit-copilot-create-instruction](.github/skills/copilot/kit-copilot-create-instruction/SKILL.md) | Creates fine-grained `.github/instructions/*.instructions.md` files with targeted `applyTo` glob patterns for specific technologies, file types, or architectural layers. Use after creating the core instruction file to add technology-specific guidance. |
 | [kit-copilot-create-prompt](.github/skills/copilot/kit-copilot-create-prompt/SKILL.md) | Creates a simple Copilot prompt file (`.prompt.md`) — a lightweight task template for one-shot workflows. Choose this over a skill when the task doesn't need bundled resources, scripts, or cross-platform portability. |
 | [kit-copilot-create-skill](.github/skills/copilot/kit-copilot-create-skill/SKILL.md) | Scaffolds an Agent Skill directory with `SKILL.md` and optional bundled resources (scripts, templates, examples). Choose this over a prompt when the workflow is multi-step, needs supporting files, or should auto-trigger based on context. |
 
