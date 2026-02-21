@@ -89,6 +89,7 @@ When you've determined which customization to create, delegate to the appropriat
 | Create an agent skill | `kit-copilot-create-skill` | The user needs a new `SKILL.md` directory and file. This skill handles naming, description writing, and scaffolding. |
 | Create commit message instructions | `kit-copilot-create-commit-instructions` | The user wants to customize how Copilot generates commit messages. This skill handles format selection and file generation. |
 | Create core copilot instructions | `kit-copilot-create-core-instruction` | The user wants to create or update `.github/copilot-instructions.md`. This skill handles discovery, drafting, and generation of the universal project context file. |
+| Create granular instructions | `kit-copilot-create-instruction` | The user wants to create file-type-specific or technology-specific `.instructions.md` files with targeted `applyTo` glob patterns. This skill handles discovery, planning, and generation of granular instruction files. |
 | Create a prompt file | `kit-copilot-create-prompt` | The user needs a new `.prompt.md` task template. This skill handles the interview, frontmatter decisions, body structure, and generation. |
 
 ### Not Yet Available (Guide Manually)
@@ -97,7 +98,6 @@ For customization types where no skill exists yet, provide guidance on the corre
 
 | Need | Guidance |
 |---|---|
-| Create granular instructions | Guide the user to create `.github/instructions/*.instructions.md` files with `applyTo` glob patterns for file-type-specific or folder-specific conventions. Reference: [Custom Instructions docs](https://code.visualstudio.com/docs/copilot/customization/custom-instructions) |
 | Create a hook | Guide the user to create a JSON file in `.github/hooks/` with the hook configuration format. Reference: [Hooks docs](https://code.visualstudio.com/docs/copilot/customization/hooks) |
 | Configure MCP servers | Guide the user to update `.vscode/mcp.json` or `.mcp.json`. Reference: [MCP Servers docs](https://code.visualstudio.com/docs/copilot/customization/mcp-servers) |
 
