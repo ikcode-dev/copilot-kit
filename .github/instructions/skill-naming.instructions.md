@@ -56,9 +56,7 @@ The `name` field in SKILL.md frontmatter **must match** the parent directory nam
 ```yaml
 ---
 name: kit-{category}-{verb}-{object}    # must match directory name
-description: >-                          # be specific — this drives auto-invocation
-  A skill that [verb]s [object] for [context].
-  Use when [trigger scenario].
+description: "A skill that [verb]s [object] for [context]. Use when [trigger scenario]."
 argument-hint: Describe what input to provide
 user-invokable: true
 disable-model-invocation: false
