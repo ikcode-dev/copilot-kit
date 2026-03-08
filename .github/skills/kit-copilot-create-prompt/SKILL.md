@@ -2,7 +2,7 @@
 name: kit-copilot-create-prompt
 description: "Creates a new Copilot prompt file (.prompt.md) with proper frontmatter, structured body, and context-gathering strategies. Use when user asks to create, scaffold, build, generate, or set up a prompt file, slash command template, task template, or .prompt.md file."
 argument-hint: Describe the workflow or task this prompt should automate
-user-invokable: true
+user-invocable: true
 disable-model-invocation: false
 ---
 

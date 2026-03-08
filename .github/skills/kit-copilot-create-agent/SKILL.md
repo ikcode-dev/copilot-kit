@@ -2,7 +2,7 @@
 name: kit-copilot-create-agent
 description: "Scaffolds a custom agent (.agent.md) file for GitHub Copilot with persona, philosophy, tools, subagent composition, and workflow. Use when user asks to create, scaffold, build, or set up a custom agent, copilot agent, AI persona, chat mode, orchestrator, subagent worker, or .agent.md file."
 argument-hint: Describe the role or persona for the custom agent
-user-invokable: true
+user-invocable: true
 disable-model-invocation: false
 ---
 
@@ -116,7 +116,7 @@ Before creating anything, gather requirements from the user. Use `#tool:vscode/a
 5. **Agent Composition**: Is this a standalone agent, an orchestrator that delegates to subagents, or a worker that only other agents invoke?
    - **Standalone**: Default. Single persona, no delegation.
    - **Orchestrator**: Delegates to specialized workers. Needs `agents` field and `agent` tool. See [orchestrator patterns](./patterns/orchestrator-patterns.md).
-   - **Worker**: Only accessible as subagent. Set `user-invokable: false`. Typically uses faster/cheaper model.
+   - **Worker**: Only accessible as subagent. Set `user-invocable: false`. Typically uses faster/cheaper model.
 6. **Skills Integration**: Which existing workspace skills should this agent leverage? (Discover during Workspace Scan in Step 2.)
 7. **Handoffs**: Should this agent hand off to other agents? If so, describe the workflow (e.g., planning → implementation, implementation → review).
 8. **Storage Location**: Where should the agent file live? Default to workspace `.github/agents/` folder. Alternatives: user profile (for cross-workspace reuse), `.claude/agents/` (for Claude Code compatibility).
@@ -149,7 +149,7 @@ Using the interview answers and workspace scan, compose the agent:
 - Write an `argument-hint` that guides users on how to start a conversation
 - Build the `tools` using inline YAML array syntax — include MCP servers required by complementary skills
 - Set `agents` field based on composition type (orchestrator → list workers, standalone → omit)
-- Set `user-invokable: false` for subagent-only workers
+- Set `user-invocable: false` for subagent-only workers
 - Optionally set `model` based on role (coordinators → powerful, workers → fast/cheap)
 - Add `handoffs` if applicable (from question 7)
 
@@ -228,7 +228,7 @@ Before reporting completion, iterate through every check below.
 - [ ] Philosophy principles are actionable and falsifiable, not generic
 - [ ] Problem-solving techniques have "When to use" trigger conditions
 - [ ] If `agents` field is set, referenced agents exist in the workspace
-- [ ] If `user-invokable: false`, at least one orchestrator agent references this agent
+- [ ] If `user-invocable: false`, at least one orchestrator agent references this agent
 - [ ] If `handoffs` defined, target agents exist and transitions are logical
 - [ ] Model selection matches role (coordinators → powerful, workers → fast)
 </validation>
@@ -272,7 +272,7 @@ After generating the agent, always display this message to the user:
 | `agents` | No | Subagent access: `['*']` = all, `['name']` = specific, `[]` = none. Overrides `disable-model-invocation` on referenced agents. |
 | `handoffs` | No | Workflow transitions. Fields: `label`, `agent`, `prompt`, `send` (default `false`). |
 | `model` | No | Lock to specific model or prioritized array. Coordinators → powerful, workers → fast. |
-| `user-invokable` | No | Default `true`. Set `false` for subagent-only workers (hidden from dropdown). |
+| `user-invocable` | No | Default `true`. Set `false` for subagent-only workers (hidden from dropdown). |
 | `disable-model-invocation` | No | Default `false`. Set `true` to prevent auto-invocation as subagent. `agents` array overrides this. |
 
 ### Tool Discovery
@@ -308,7 +308,7 @@ For agents that delegate to subagents, consult the [orchestrator patterns refere
 
 | Pattern | When to use | Key configuration |
 |---|---|---|
-| **Coordinator + Workers** | Complex tasks needing multiple specializations | `agents: ['worker-a', 'worker-b']`, workers set `user-invokable: false` |
+| **Coordinator + Workers** | Complex tasks needing multiple specializations | `agents: ['worker-a', 'worker-b']`, workers set `user-invocable: false` |
 | **Multi-Perspective Review** | Parallel independent analysis (security, quality, perf) | Coordinator dispatches parallel subagents via `runSubagent` |
 | **Sequential Handoffs** | User-guided phase transitions (Plan → Implement → Review) | `handoffs` with `send: false` for user review |
 

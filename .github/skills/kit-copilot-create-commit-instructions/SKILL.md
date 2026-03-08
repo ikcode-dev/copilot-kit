@@ -2,7 +2,7 @@
 name: kit-copilot-create-commit-instructions
 description: "Generates a commit message instruction file for GitHub Copilot's VS Code commit message generation feature. Use when user asks to create, set up, or customize commit message instructions, commit conventions, commit message format, or Copilot commit generation settings."
 argument-hint: Describe your commit message preferences (e.g., "conventional commits with scope", "include Jira ticket numbers", "emoji-enhanced").
-user-invokable: true
+user-invocable: true
 disable-model-invocation: false
 ---
 

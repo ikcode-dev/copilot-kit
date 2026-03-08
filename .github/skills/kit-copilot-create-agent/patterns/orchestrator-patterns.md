@@ -33,7 +33,7 @@ Worker frontmatter:
 
 <template name="worker-frontmatter">
 ```yaml
-user-invokable: false      # Only accessible as subagent
+user-invocable: false      # Only accessible as subagent
 model: "GPT-4.1 mini"      # Faster/cheaper for focused work
 tools: [edit/createFile, edit/editFiles, search]  # Domain-specific tools only
 ```

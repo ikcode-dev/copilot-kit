@@ -4,7 +4,7 @@ argument-hint: "Describe the [task type] or issue to solve"
 tools: [edit/createFile, edit/editFiles, edit/createDirectory, search, usages, problems, runCommands, runTests, fetch]
 # agents: ['*']                    # Subagent delegation: '*' = all, ['agent-name'] = specific, [] = none
 # model: ''                        # Lock model: coordinators → powerful, workers → fast/cheap
-# user-invokable: true             # Set false for subagent-only workers
+# user-invocable: true             # Set false for subagent-only workers
 # disable-model-invocation: false   # Set true to prevent auto-invocation as subagent
 # handoffs:
 #   - label: "Next Step"

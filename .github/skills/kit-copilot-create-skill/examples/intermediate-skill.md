@@ -9,7 +9,7 @@ A skill with multi-step interview, workspace scanning, XML tags, validation, and
 name: scaffold-react-component
 description: "Scaffolds a React component with tests, stories, and styles following project conventions. Use when user asks to create, scaffold, generate, or set up a new component, UI element, or React module."
 argument-hint: Component name and type (e.g., 'UserProfile page component')
-user-invokable: true
+user-invocable: true
 disable-model-invocation: false
 ---
 

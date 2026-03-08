@@ -9,7 +9,7 @@ A simple skill with no bundled resources — just frontmatter and a short body. 
 name: generate-changelog
 description: "Generates a changelog entry from recent git commits. Use when user asks to create, generate, draft, or update a changelog, release notes, or commit summary."
 argument-hint: Describe the version or date range for the changelog
-user-invokable: true
+user-invocable: true
 disable-model-invocation: false
 ---
 

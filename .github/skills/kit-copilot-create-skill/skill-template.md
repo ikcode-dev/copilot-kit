@@ -2,7 +2,7 @@
 name: {skill-name}
 description: "{Does what}. Use when {trigger scenarios}."
 argument-hint: Describe what input to provide
-user-invokable: true
+user-invocable: true
 disable-model-invocation: false
 ---
 

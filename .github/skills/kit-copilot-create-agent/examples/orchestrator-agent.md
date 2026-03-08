@@ -88,7 +88,7 @@ Before decomposing any task:
 description: 'Implementation specialist — writes production-ready code from detailed task specifications.'
 argument-hint: 'Provide the task specification with full context'
 tools: [edit/createFile, edit/editFiles, search, read/readFile, runTests, runCommands, 'context7/*']
-user-invokable: false
+user-invocable: false
 model: "Claude Opus 4.6"
 ---
 ```
@@ -122,7 +122,7 @@ You are a focused implementation specialist. You receive detailed task specifica
 description: 'Code review specialist — analyzes implementation quality, correctness, and adherence to standards.'
 argument-hint: 'Provide the code to review with context and acceptance criteria'
 tools: [search, read/readFile, problems]
-user-invokable: false
+user-invocable: false
 model: "Claude Opus 4.6"
 ---
 ```
@@ -150,7 +150,7 @@ You are a focused code review specialist. You analyze implementations for correc
 **Why this works as an orchestrator example:**
 - Shows THREE files that compose a multi-agent system
 - Coordinator: `agents` field restricts delegation, powerful model, read-only tools (no `edit`)
-- Workers: `user-invokable: false` (subagent-only), fast models, domain-specific tools
+- Workers: `user-invocable: false` (subagent-only), fast models, domain-specific tools
 - Context isolation is explicitly addressed in philosophy and guidelines
 - Delegation guidelines ensure workers get complete context (they have NO conversation history)
 - Model tiering: coordinator uses Claude Sonnet 4, implementation worker uses GPT-4.1 mini

@@ -2,7 +2,7 @@
 name: kit-copilot-create-core-instruction
 description: "Creates the foundational .github/copilot-instructions.md file that provides universal project context for all GitHub Copilot interactions. Use when user asks to create, generate, set up, or scaffold copilot instructions, core instructions, project instructions, or copilot-instructions.md."
 argument-hint: Provide details about the project or let me discover them automatically
-user-invokable: true
+user-invocable: true
 disable-model-invocation: false
 ---
 
