@@ -58,7 +58,7 @@ The `name` field in SKILL.md frontmatter **must match** the parent directory nam
 name: kit-{category}-{verb}-{object}    # must match directory name
 description: "A skill that [verb]s [object] for [context]. Use when [trigger scenario]."
 argument-hint: Describe what input to provide
-user-invokable: true
+user-invocable: true
 disable-model-invocation: false
 ---
 ```
