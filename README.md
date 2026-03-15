@@ -45,13 +45,13 @@ flowchart LR
 
 New to this repo? Here's the recommended path to set up Copilot customizations in your project. You have two options:
 
-**Option A: Let the Architect guide you (recommended)**
+**Option A: Let the Engineering Team guide you (recommended)**
 
-Switch to the [`kit-copilot-architect`](.github/agents/kit-copilot-architect.agent.md) agent in Copilot Chat and describe what you need. For example:
+Switch to the [`kit-copilot-engineering-team`](.github/agents/kit-copilot-engineering-team.agent.md) agent in Copilot Chat and describe what you need. For example:
 
 > _"Please generate instructions for Copilot based on my repository"_
 
-The architect will analyze your codebase and walk you through creating the right customizations.
+The engineering team orchestrator will analyze your codebase and walk you through creating the right customizations.
 
 **Option B: Run the setup skills directly**
 
@@ -84,7 +84,7 @@ Specialized Copilot agent personalities for different development scenarios
 
 | Agent | Description | MCP Tools |
 |-------|-------------|-----------|
-| [kit-copilot-architect](.github/agents/kit-copilot-architect.agent.md) | Copilot Customization Architect — analyzes your needs and picks the right customization mechanism (agent, skill, instruction, prompt, hook, or MCP). Delegates implementation to specialized skills. | Sequential Thinking |
+| [kit-copilot-engineering-team](.github/agents/kit-copilot-engineering-team.agent.md) | Copilot engineering orchestrator — handles the full range of customization requests from single-mechanism tasks to complex multi-artifact projects. Delegates to specialized workers for research, creation, validation, and review. | Sequential Thinking |
 | [kit-backend-engineer](.github/agents/kit-backend-engineer.agent.md) | Pragmatic backend engineer specializing in APIs, databases, and server-side architecture | Sequential Thinking, Context7 |
 
 #### How to Use Custom Agents
@@ -96,17 +96,26 @@ Specialized Copilot agent personalities for different development scenarios
 
 > **Note:** Custom agents require VS Code 1.106 or later.
 
-#### 🏗️ Copilot Customization Architect — Getting Started
+#### 🏗️ Copilot Engineering Team — Getting Started
 
-The **kit-copilot-architect** agent is the recommended starting point when you're unsure which Copilot customization you need. Instead of learning the differences between agents, skills, instructions, prompts, hooks, and MCP servers yourself, describe what you want to achieve and let the architect figure out the right approach.
+The **kit-copilot-engineering-team** agent is the recommended entry point for Copilot customization in this repository. Whether you need a single customization or a complete setup, describe what you want to achieve and the orchestrator will handle the rest.
 
 **Example prompts:**
-- _"I want the AI to always follow our team's coding conventions"_ → the architect will recommend custom instructions
-- _"I need a reusable workflow for scaffolding API endpoints"_ → the architect will recommend an agent skill
-- _"I want a specialized AI persona for security reviews"_ → the architect will recommend a custom agent
-- _"I want code to be auto-formatted after every edit"_ → the architect will recommend a hook
+- _"I want the AI to always follow our team's coding conventions"_ → research identifies the right mechanism, then creates the appropriate instruction files
+- _"I need a reusable workflow for scaffolding API endpoints"_ → creates an agent skill with full review
+- _"I want a specialized AI persona for security reviews"_ → creates a custom agent with quality validation
+- _"Set up a complete Copilot customization suite for my project"_ → full audit, gap analysis, and multi-artifact creation
 
-The architect uses sequential thinking to analyze your request, asks clarifying questions only when genuinely needed, and then delegates to the appropriate skill (e.g., `kit-copilot-create-agent`, `kit-copilot-create-skill`) to handle the implementation. If you already know which skill you need, just name it directly and the architect will delegate immediately without extra questions.
+The orchestrator delegates to specialized workers: the researcher discovers what exists and classifies what's needed, the creator builds the artifacts, the validator runs checks, and the reviewer ensures quality. For simple unambiguous requests, it uses a lightweight create-and-review path.
+
+### 🏛️ Architecture Decision Records (ADRs)
+
+Want to understand not just **what** is in this repository, but **why** it is structured this way? Browse the ADRs for the architectural and workflow decisions behind `copilot-kit`.
+
+More ADRs will be added over time as the project evolves.
+
+- 📘 [ADR index](docs/adr/README.md) — what ADRs are, when to create them, and how this repo uses them
+- 0001 [Orchestrator architecture](docs/adr/0001-orchestrator-architecture.md) — why `copilot-kit` uses one primary orchestrator with curated domain orchestrators
 
 ### 🧩 Agent Skills
 
