@@ -116,6 +116,7 @@ More ADRs will be added over time as the project evolves.
 
 - 📘 [ADR index](docs/adr/README.md) — what ADRs are, when to create them, and how this repo uses them
 - 0001 [Orchestrator architecture](docs/adr/0001-orchestrator-architecture.md) — why `copilot-kit` uses one primary orchestrator with curated domain orchestrators
+- 0002 [Domain orchestrator team structure](docs/adr/0002-domain-orchestrator-team-structure.md) — why domain orchestrators use a public team metaphor while keeping orchestrator / worker / artifact as the internal architecture vocabulary
 
 ### 🧩 Agent Skills
 
