@@ -55,7 +55,7 @@ Where `{agent-name}` matches the naming pattern. All agents live directly in `.g
 
 ```
 .github/agents/
-  kit-copilot-architect.agent.md
+  kit-copilot-engineering-team.agent.md
   kit-sdd-expert.agent.md
   kit-backend-engineer.agent.md
 ```
@@ -79,7 +79,7 @@ tools: [...]                             # tools the agent has access to
 
 | Agent filename | Category | Role |
 |----------------|----------|------|
-| `kit-copilot-architect` | copilot | Analyzes customization needs, picks the right mechanism |
+| `kit-copilot-engineering-team` | copilot | Domain orchestrator for Copilot customization engineering |
 | `kit-sdd-expert` | sdd | Orchestrates spec-driven development workflows |
 | `kit-backend-engineer` | backend | Pragmatic backend implementation specialist |
 | `kit-frontend-engineer` | frontend | *(example)* Frontend/UI implementation specialist |
@@ -89,10 +89,10 @@ tools: [...]                             # tools the agent has access to
 
 | Avoid | Why | Use instead |
 |-------|-----|-------------|
-| `copilot-architect` | No origin prefix; collides with project agents | `kit-copilot-architect` |
-| `kit-architect` | Missing category; ambiguous grouping | `kit-copilot-architect` |
-| `kit-copilot-create-architect` | Verb-based; agents are roles, not actions | `kit-copilot-architect` |
-| `Kit-Copilot-Architect` | Must be lowercase with hyphens | `kit-copilot-architect` |
+| `copilot-engineering-team` | No origin prefix; collides with project agents | `kit-copilot-engineering-team` |
+| `kit-engineering-team` | Missing category; ambiguous grouping | `kit-copilot-engineering-team` |
+| `kit-copilot-create-engineering-team` | Verb-based; agents are roles, not actions | `kit-copilot-engineering-team` |
+| `Kit-Copilot-Engineering-Team` | Must be lowercase with hyphens | `kit-copilot-engineering-team` |
 | `spec-planner` | No origin prefix; no category | `kit-sdd-expert` |
 
 ## Cross-References
