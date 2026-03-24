@@ -43,27 +43,23 @@ flowchart LR
 
 #### 🏁 Getting Started — Customise Copilot for Your Project
 
-New to this repo? Here's the recommended path to set up Copilot customizations in your project. You have two options:
+New to this repo? Start with the public prompt entrypoint:
 
-**Option A: Let the Engineering Team guide you (recommended)**
+**Recommended default: [`/kit-customize-copilot`](.github/prompts/kit-customize-copilot.prompt.md)**
 
-Switch to the [`kit-copilot-engineering-team`](.github/agents/kit-copilot-engineering-team.agent.md) agent in Copilot Chat and describe what you need. For example:
+Run the prompt in Copilot Chat and describe the customization outcome you want. For example:
 
-> _"Please generate instructions for Copilot based on my repository"_
+> *"/kit-customize-copilot Create project-wide Copilot guidance for this repository based on its tech stack and conventions"*
 
-The engineering team orchestrator will analyze your codebase and walk you through creating the right customizations.
+This routes to the [`kit-copilot-engineering-team`](.github/agents/kit-copilot-engineering-team.agent.md) orchestrator, which inspects the repo, classifies the request, and chooses the right internal workflow for you.
 
-**Option B: Run the setup skills directly**
+If you prefer to go deeper after the first pass, read the dedicated guide: **[Customize Copilot with `/kit-customize-copilot`](docs/customize-copilot-prompt-guide.md)**.
 
-If you prefer a hands-on approach, run these three skills in order:
+**Optional direct path:** if you like working from the agent picker, you can select [`kit-copilot-engineering-team`](.github/agents/kit-copilot-engineering-team.agent.md) directly and describe the same outcome there.
 
-| Step | Skill | Why |
-|------|-------|-----|
-| 1 | [`/kit-copilot-create-core-instruction`](.github/skills/copilot/kit-copilot-create-core-instruction/SKILL.md) | Creates `.github/copilot-instructions.md` — the universal project context file attached to **every** Copilot conversation. This is the foundation: it tells Copilot your tech stack, architecture, and cross-cutting conventions so responses are consistent and project-aware. |
-| 2 | [`/kit-copilot-create-instruction`](.github/skills/copilot/kit-copilot-create-instruction/SKILL.md) | Creates `.github/instructions/*.instructions.md` files with targeted `applyTo` glob patterns. These activate only for matching file types (e.g., React components, test files, API routes), giving Copilot precise guidance without bloating the core file. |
-| 3 | [`/kit-copilot-create-commit-instructions`](.github/skills/copilot/kit-copilot-create-commit-instructions/SKILL.md) | Creates `.github/commit-message-instructions.md` for consistent commit messages. Defaults to Conventional Commits — so every team member gets the same format when using Copilot's commit message generation. |
+The repository-owned `kit-copilot-create-*` skills still exist as internal building blocks, but they are no longer the default onboarding path or the recommended public alternative to `/kit-customize-copilot`.
 
-> **Why does this matter?** Without custom instructions, Copilot relies on generic knowledge. With them, it understands _your_ project's conventions, patterns, and tech stack — producing more consistent, relevant, and accurate suggestions across your entire codebase.
+> **Why does this matter?** Without custom instructions, Copilot relies on generic knowledge. With them, it understands *your* project's conventions, patterns, and tech stack — producing more consistent, relevant, and accurate suggestions across your entire codebase.
 
 #### 🔧 Task Prompts
 
@@ -98,13 +94,16 @@ Specialized Copilot agent personalities for different development scenarios
 
 #### 🏗️ Copilot Engineering Team — Getting Started
 
-The **kit-copilot-engineering-team** agent is the recommended entry point for Copilot customization in this repository. Whether you need a single customization or a complete setup, describe what you want to achieve and the orchestrator will handle the rest.
+The **kit-copilot-engineering-team** agent is the optional direct-agent path for Copilot customization in this repository. If you prefer using the agent picker instead of the public prompt, select it directly and describe what you want to achieve.
+
+For most users, the recommended public starting point remains [`/kit-customize-copilot`](.github/prompts/kit-customize-copilot.prompt.md).
 
 **Example prompts:**
-- _"I want the AI to always follow our team's coding conventions"_ → research identifies the right mechanism, then creates the appropriate instruction files
-- _"I need a reusable workflow for scaffolding API endpoints"_ → creates an agent skill with full review
-- _"I want a specialized AI persona for security reviews"_ → creates a custom agent with quality validation
-- _"Set up a complete Copilot customization suite for my project"_ → full audit, gap analysis, and multi-artifact creation
+
+- *"I want the AI to always follow our team's coding conventions"* → research identifies the right mechanism, then creates the appropriate instruction files
+- *"I need a reusable workflow for scaffolding API endpoints"* → creates an agent skill with full review
+- *"I want a specialized AI persona for security reviews"* → creates a custom agent with quality validation
+- *"Set up a complete Copilot customization suite for my project"* → full audit, gap analysis, and multi-artifact creation
 
 The orchestrator delegates to specialized workers: the researcher discovers what exists and classifies what's needed, the creator builds the artifacts, the validator runs checks, and the reviewer ensures quality. For simple unambiguous requests, it uses a lightweight create-and-review path.
 
@@ -120,38 +119,40 @@ More ADRs will be added over time as the project evolves.
 
 ### 🧩 Agent Skills
 
-Reusable slash-command skills that extend Copilot's capabilities. Skills are defined as `SKILL.md` files following the [Agent Skills specification](https://agentskills.io/), [VS Code Skills docs](https://code.visualstudio.com/docs/copilot/customization/agent-skills), and can be invoked via `/` commands in Copilot Chat.
+Reusable skill artifacts that extend Copilot's capabilities. Skills are defined as `SKILL.md` files following the [Agent Skills specification](https://agentskills.io/), [VS Code Skills docs](https://code.visualstudio.com/docs/copilot/customization/agent-skills), and can be adapted for your own repositories.
 
-Every skill listed below works as a **`/` slash command** — type `/` in Copilot Chat and pick the skill by name (e.g., `/kit-copilot-create-agent`). The AI model can also invoke skills automatically when your request matches a skill's description.
+For the Copilot customization workflow in this repository, the preferred public slash-command entry is [`/kit-customize-copilot`](.github/prompts/kit-customize-copilot.prompt.md). The repository-owned `kit-copilot-create-*` skills below are documented as reusable building blocks and reference implementations — not as the default public onboarding path.
 
 | Skill | Description |
 |-------|-------------|
-| [kit-copilot-create-agent](.github/skills/copilot/kit-copilot-create-agent/SKILL.md) | Scaffolds a custom agent (`.agent.md`) file for GitHub Copilot with persona, philosophy, tools, and workflow. Use when you need to create a new custom agent, AI persona, or chat mode. |
-| [kit-copilot-create-commit-instructions](.github/skills/copilot/kit-copilot-create-commit-instructions/SKILL.md) | Generates a commit message instruction file for Copilot's commit message generation in VS Code. Defaults to Conventional Commits. |
-| [kit-copilot-create-core-instruction](.github/skills/copilot/kit-copilot-create-core-instruction/SKILL.md) | Creates the foundational `.github/copilot-instructions.md` file that provides universal project context for all Copilot interactions. Keeps the core file lean (50-150 lines) so every line earns its place. |
-| [kit-copilot-create-instruction](.github/skills/copilot/kit-copilot-create-instruction/SKILL.md) | Creates fine-grained `.github/instructions/*.instructions.md` files with targeted `applyTo` glob patterns for specific technologies, file types, or architectural layers. Use after creating the core instruction file to add technology-specific guidance. |
-| [kit-copilot-create-prompt](.github/skills/copilot/kit-copilot-create-prompt/SKILL.md) | Creates a simple Copilot prompt file (`.prompt.md`) — a lightweight task template for one-shot workflows. Choose this over a skill when the task doesn't need bundled resources, scripts, or cross-platform portability. |
-| [kit-copilot-create-skill](.github/skills/copilot/kit-copilot-create-skill/SKILL.md) | Scaffolds an Agent Skill directory with `SKILL.md` and optional bundled resources (scripts, templates, examples). Choose this over a prompt when the workflow is multi-step, needs supporting files, or should auto-trigger based on context. |
+| [kit-copilot-create-agent](.github/skills/kit-copilot-create-agent/SKILL.md) | Scaffolds a custom agent (`.agent.md`) file for GitHub Copilot with persona, philosophy, tools, and workflow. Useful as a reusable building block when creating a new custom agent, AI persona, or chat mode. |
+| [kit-copilot-create-commit-instructions](.github/skills/kit-copilot-create-commit-instructions/SKILL.md) | Generates a commit message instruction file for Copilot's commit message generation in VS Code. Useful for standardizing commit-message behavior in a repo. |
+| [kit-copilot-create-core-instruction](.github/skills/kit-copilot-create-core-instruction/SKILL.md) | Creates the foundational `.github/copilot-instructions.md` file that provides universal project context for Copilot interactions. |
+| [kit-copilot-create-instruction](.github/skills/kit-copilot-create-instruction/SKILL.md) | Creates fine-grained `.github/instructions/*.instructions.md` files with targeted `applyTo` glob patterns for specific technologies, file types, or architectural layers. |
+| [kit-copilot-create-prompt](.github/skills/kit-copilot-create-prompt/SKILL.md) | Creates a simple Copilot prompt file (`.prompt.md`) for lightweight, repeatable workflows. |
+| [kit-copilot-create-skill](.github/skills/kit-copilot-create-skill/SKILL.md) | Scaffolds an Agent Skill directory with `SKILL.md` and optional bundled resources for richer reusable workflows. |
 
 #### How to Use Agent Skills
 
-There are two ways to make skills available:
+If you want to study, copy, or adapt Agent Skills for your own repository, there are two common ways to make them available. For this repository's Copilot customization workflow, though, start with [`/kit-customize-copilot`](.github/prompts/kit-customize-copilot.prompt.md) instead of manually choosing among the repository-owned `kit-copilot-create-*` skills.
 
-**Option A: Copy to your project (per-repo)**
+##### Option A: Copy to your project (per-repo)
 
-Copy the skill directory into your project's `.github/skills/copilot/` folder. This lets you adjust the skill to fit your project's specific needs.
+Copy the skill directory into your project's `.github/skills/` folder. This lets you adjust the skill to fit your project's specific needs.
 
-**Option B: Configure a global skills location (all repos, 🌟 recommended)**
+##### Option B: Configure a global skills location (all repos, 🌟 recommended)
 
-Point VS Code to this repo's skills directory so every project gets access automatically — no copying needed.
+Point VS Code to this repo's skills directory so reusable skills are available across projects — no copying needed.
 
 1. Open VS Code Settings (`Cmd + ,` on macOS, `Ctrl + ,` on Windows/Linux)
-2. Search for **"Agent Skills Locations"** (setting ID: `chat.agentSkillsLocations`)
-3. Add the absolute path to the skills directory, e.g.:
-   ```
-   ~/dev/ikcode-dev/copilot-kit/.github/skills/copilot
-   ```
-4. Skills will now appear as `/` slash commands in Copilot Chat across all your workspaces
+1. Search for **"Agent Skills Locations"** (setting ID: `chat.agentSkillsLocations`)
+1. Add the absolute path to the skills directory, e.g.:
+
+  ```text
+  ~/dev/ikcode-dev/copilot-kit/.github/skills
+  ```
+
+1. Any user-invocable skills from that location will now appear in Copilot Chat across your workspaces
 
 > **Tip:** If you clone this repo to a different path, update the setting accordingly. Use `~` for your home directory to keep it portable across machines.
 
