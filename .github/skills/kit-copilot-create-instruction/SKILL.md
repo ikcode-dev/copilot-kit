@@ -2,7 +2,7 @@
 name: kit-copilot-create-instruction
 description: "Creates fine-grained .github/instructions/*.instructions.md files with targeted applyTo glob patterns for specific technologies, file types, or architectural layers. Use when user asks to create, scaffold, generate, or set up granular instructions, file-type-specific instructions, technology-specific instructions, or .instructions.md files."
 argument-hint: Describe the scope, technology, or file patterns for which you want to create granular instruction files (e.g., "React components", "API routes", "test files")
-user-invocable: true
+user-invocable: false
 disable-model-invocation: false
 ---
 

@@ -1,8 +1,8 @@
 ---
 name: kit-copilot-create-prompt
-description: "Creates a new Copilot prompt file (.prompt.md) with proper frontmatter, structured body, and context-gathering strategies. Use when user asks to create, scaffold, build, generate, or set up a prompt file, slash command template, task template, or .prompt.md file."
+description: "Creates a new Copilot prompt file (.prompt.md) with proper frontmatter, structured body, and context-gathering strategies. Use when user asks to create, scaffold, build, generate, or set up a prompt file, task template, or .prompt.md file."
 argument-hint: Describe the workflow or task this prompt should automate
-user-invocable: true
+user-invocable: false
 disable-model-invocation: false
 ---
 
@@ -10,7 +10,7 @@ disable-model-invocation: false
 
 ## What This Skill Does
 
-Creates a properly structured Copilot prompt file (`.prompt.md`) for VS Code following the [prompt files documentation](https://code.visualstudio.com/docs/copilot/customization/prompt-files). The generated prompt defines a **specific task** — a reusable workflow template that users invoke via the `/` command in Copilot chat.
+Creates a properly structured Copilot prompt file (`.prompt.md`) for VS Code following the [prompt files documentation](https://code.visualstudio.com/docs/copilot/customization/prompt-files). The generated prompt defines a **specific task** — a reusable workflow template for Copilot chat and related prompt surfaces.
 
 Prompt files are the simplest customization mechanism: a Markdown file with optional YAML frontmatter that acts as a task shortcut. They're ideal for one-shot workflows that don't require bundled resources, scripts, or cross-platform portability.
 
@@ -45,7 +45,7 @@ If during the interview the user's needs exceed what a prompt file handles well,
 
 - The workflow needs bundled resource files (scripts, templates, examples)
 - The workflow should work across VS Code, CLI, and coding agent (portability)
-- The workflow should auto-trigger based on description matching (not just manual `/` invocation)
+- The workflow should auto-trigger based on description matching (not just manual prompt selection)
 - The workflow is complex enough to warrant its own directory with supporting files
 </escalation-criteria>
 
@@ -146,9 +146,9 @@ After validation, display this message to the user:
 
 <user-message>
 **How to use your new prompt:**
-1. Open Copilot Chat and type `/`
-2. Select `<prompt-name>` from the list
-3. Provide any requested input
+1. Open Copilot Chat and choose `<prompt-name>` from your available prompts
+2. Provide any requested input
+3. Run it with the agent specified in the prompt frontmatter, or your current agent if none is set
 
 The prompt works with any agent mode. To verify it loads correctly, check **Diagnostics** (right-click in Chat view → Diagnostics).
 </user-message>
@@ -160,7 +160,7 @@ Suggest related customizations that would complement the new prompt (agents, ins
 | Field | Required | Notes |
 |-------|----------|-------|
 | `name` | No (inferred from filename) | Explicit `name` overrides the filename. Use kebab-case. |
-| `description` | Recommended | Shown in the `/` command palette. Write 30-60 chars that help users identify this prompt quickly. |
+| `description` | Recommended | Shown in prompt-selection surfaces. Write 30-60 chars that help users identify this prompt quickly. |
 | `agent` | No | Controls which agent mode processes the prompt. See Agent Mode Decision Guide below. |
 | `argument-hint` | No | Placeholder text shown in the chat input after the user selects this prompt. Guide them on what input to provide. |
 | `tools` | No | Restrict available tools. Omit for full access. See Tool Restriction Patterns below. |

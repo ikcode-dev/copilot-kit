@@ -2,7 +2,7 @@
 name: kit-copilot-create-agent
 description: "Scaffolds a custom agent (.agent.md) file for GitHub Copilot with persona, philosophy, tools, subagent composition, and workflow. Use when user asks to create, scaffold, build, or set up a custom agent, copilot agent, AI persona, chat mode, orchestrator, subagent worker, or .agent.md file."
 argument-hint: Describe the role or persona for the custom agent
-user-invocable: true
+user-invocable: false
 disable-model-invocation: false
 ---
 

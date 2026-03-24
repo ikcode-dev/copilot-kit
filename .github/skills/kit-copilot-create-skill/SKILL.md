@@ -1,8 +1,8 @@
 ---
 name: kit-copilot-create-skill
-description: "Scaffolds a new Agent Skill directory and SKILL.md file following the Agent Skills open standard. Use when a user asks to create, scaffold, or set up a new skill, slash command, or reusable capability for GitHub Copilot."
+description: "Scaffolds a new Agent Skill directory and SKILL.md file following the Agent Skills open standard. Use when a user asks to create, scaffold, or set up a new skill or reusable capability for GitHub Copilot."
 argument-hint: Skill name, purpose, and any specific capabilities or resources it should include
-user-invocable: true
+user-invocable: false
 disable-model-invocation: false
 ---
 
@@ -63,7 +63,7 @@ Before creating anything, gather requirements from the user. Use `#tool:vscode/a
 1. **Task**: What repetitive task do you want to automate? (e.g., writing tests, planning sprints, scaffolding components)
 2. **Complexity**: How many steps does the workflow have? Does it need scripts, templates, or examples? (If it's a simple one-shot task with no resources, a prompt file may be more appropriate — see escalation criteria above.)
 3. **Name**: What should the skill be called? (suggest a kebab-case name if the user doesn't have one)
-4. **Invocation**: Should it appear as a `/` slash command, or only trigger automatically? (determines `user-invocable` and `disable-model-invocation`)
+4. **Invocation**: Should it be user-invocable from chat surfaces, or only trigger automatically? (determines `user-invocable` and `disable-model-invocation`)
 5. **Triggers**: What phrases would a user say that should trigger this skill? (feeds into the description's "Use when" clause)
 6. **Resources**: Does the skill need bundled resources — scripts, templates, examples?
 
@@ -185,7 +185,7 @@ After validation, display this message to the user:
 <user-message>
 **How to use your new skill:**
 1. The skill auto-triggers when Copilot detects a matching request based on the description
-2. You can also invoke it manually via `/skill-name` in Copilot Chat
+2. If `user-invocable: true`, it can also be selected from Copilot Chat's available skills
 3. Verify it loads correctly by checking **Diagnostics** (right-click in Chat view → Diagnostics)
 
 To test: ask Copilot a question using one of the trigger phrases from the skill's description and confirm the skill activates.
@@ -217,9 +217,9 @@ disable-model-invocation: false
 |-------|----------|-------|
 | `name` | Yes | Must match parent directory name. Strictly lowercase-with-hyphens. Max 64 chars. |
 | `description` | Yes | **Critical for auto-invocation.** See Writing Effective Descriptions below. Max 1024 chars. |
-| `argument-hint` | No | Shown in chat input when skill is invoked as `/` command. |
-| `user-invocable` | No | Default `true`. Set `false` to hide from `/` menu. |
-| `disable-model-invocation` | No | Default `false`. Set `true` to require manual `/` invocation only. |
+| `argument-hint` | No | Shown in chat input when the skill is selected manually from available chat skills. |
+| `user-invocable` | No | Default `true`. Set `false` to hide the skill from user-invocable chat surfaces. |
+| `disable-model-invocation` | No | Default `false`. Set `true` to require explicit manual selection when user invocation is enabled. |
 
 ### Writing Effective Descriptions
 
